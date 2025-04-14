@@ -1,0 +1,89 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Letra con Audio</title>
+  <link rel="stylesheet" href="estilos.css">
+  <style>
+    /* body {
+        background-color: purple;
+        margin: 0;
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+        overflow: hidden;
+        color: white;
+        font-family: Arial, sans-serif;
+    }
+
+    .contenedor {
+        border: 1px solid white;
+        width: 80%;
+        height: 80vh;
+        margin-top: 10vh;
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+    }
+
+    #letra {
+        width: 90%;
+        margin: 5%;
+        padding: 10px;
+        text-align: center;
+        font-size: 1.5rem;
+    }
+
+    button {
+        padding: 5px 10px;
+        font-size: 1rem;
+        cursor: pointer;
+        border-radius: 15px;
+    } */
+  </style>
+</head>
+<body>
+  <div class="contenedor">
+    <div id="letra"></div>
+    <button onclick="iniciar()" id="btn">Iniciar Canción</button>
+    <audio id="audio" src="Coldplay - Yellow.mp3"></audio>
+  </div>
+
+<script>
+    const letraCancion = [
+      { texto: "Primera línea 🎶", inicio: 3, fin: 7 },
+      { texto: "Segunda línea 💜", inicio: 8, fin: 12 },
+      { texto: "Tercera línea 🎤", inicio: 14, fin: 18 },
+      { texto: "Cuarta línea 🎧", inicio: 20, fin: 22 },
+      { texto: "Quinta línea 🕐", inicio: 27, fin: 30 }
+    ];
+    const boton = document.getElementById('btn');
+
+    function iniciar() {
+        boton.style.display = "none";
+        const letraDiv = document.getElementById("letra");
+        const audio = document.getElementById("audio");
+
+        letraDiv.textContent = "";
+        audio.currentTime = 0;
+        audio.play();
+
+        letraCancion.forEach(linea => {
+            const tiempoInicio = linea.inicio * 1000;
+            const tiempoFin = linea.fin * 1000;
+
+            setTimeout(() => {
+            letraDiv.textContent = linea.texto;
+            }, tiempoInicio);
+
+            setTimeout(() => {
+            letraDiv.textContent = "";
+            }, tiempoFin);
+        });
+        }
+</script>
+</body>
+</html>
